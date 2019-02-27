@@ -13,12 +13,15 @@ const Waveform = ({ audio }) => {
     waveSurfer.on('ready', () => {
       setLocalWaveSurfer(waveSurfer);
     });
+
+    return () => {
+      waveSurfer.destroy();
+    };
   }, []);
 
   return (
     <>
       <div id="waveForm" />
-      {console.log(localWaveSurfer)}
     </>
   );
 };
