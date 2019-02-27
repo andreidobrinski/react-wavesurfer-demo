@@ -21,6 +21,12 @@ const Waveform = ({ audio }) => {
 
   return (
     <>
+      <button
+        onClick={() => localWaveSurfer.playPause()}
+        type="button"
+      >
+        play/pause
+      </button>
       <div id="waveForm" />
     </>
   );
