@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import WaveSurfer from 'wavesurfer.js';
 
 const Waveform = ({ audio }) => {
+  const [isPlaying, toggleIsPlaying] = useState(false);
   const [localWaveSurfer, setLocalWaveSurfer] = useState(() => {});
 
   useEffect(() => {
@@ -22,10 +23,13 @@ const Waveform = ({ audio }) => {
   return (
     <>
       <button
-        onClick={() => localWaveSurfer.playPause()}
+        onClick={() => {
+          localWaveSurfer.playPause();
+          toggleIsPlaying(prevState => !prevState);
+        }}
         type="button"
       >
-        play/pause
+        {isPlaying ? 'pause' : 'play'}
       </button>
       <div id="waveForm" />
     </>
