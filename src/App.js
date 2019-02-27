@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Waveform from './Waveform';
+import pianoClip from './piano.mp3';
 
 const App = () => {
   return (
     <Wrap>
       <h1>WaveSurfer Demo</h1>
-      <Waveform />
+      <Waveform audio={pianoClip} />
     </Wrap>
   );
 }
