@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import WaveSurfer from 'wavesurfer.js';
 
 const Waveform = ({ audio }) => {
+  const [localWaveSurfer, setLocalWaveSurfer] = useState(() => {});
+
   useEffect(() => {
     const waveSurfer = WaveSurfer.create({
       container: '#waveForm',
     });
     waveSurfer.load(audio);
+    waveSurfer.on('ready', () => {
+      setLocalWaveSurfer(waveSurfer);
+    });
   }, []);
 
   return (
-    <div id="waveForm" />
+    <>
+      <div id="waveForm" />
+      {console.log(localWaveSurfer)}
+    </>
   );
 };
 
