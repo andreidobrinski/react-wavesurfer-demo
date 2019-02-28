@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import WaveSurfer from 'wavesurfer.js';
+import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
+import { WaveSurferWrap } from './styled';
 
 const Waveform = ({ audio }) => {
   const [isPlaying, toggleIsPlaying] = useState(false);
@@ -25,7 +27,7 @@ const Waveform = ({ audio }) => {
   }, []);
 
   return (
-    <>
+    <WaveSurferWrap>
       <button
         onClick={() => {
           localWaveSurfer.playPause();
@@ -33,10 +35,10 @@ const Waveform = ({ audio }) => {
         }}
         type="button"
       >
-        {isPlaying ? 'pause' : 'play'}
+        {isPlaying ? <FaPauseCircle size="3em" /> : <FaPlayCircle size="3em" />}
       </button>
       <div id="waveForm" />
-    </>
+    </WaveSurferWrap>
   );
 };
 
