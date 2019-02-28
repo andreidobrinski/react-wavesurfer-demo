@@ -9,6 +9,10 @@ const Waveform = ({ audio }) => {
   useEffect(() => {
     const waveSurfer = WaveSurfer.create({
       container: '#waveForm',
+      responsive: true,
+      barWidth: 2,
+      barHeight: 10,
+      cursorWidth: 0,
     });
     waveSurfer.load(audio);
     waveSurfer.on('ready', () => {
