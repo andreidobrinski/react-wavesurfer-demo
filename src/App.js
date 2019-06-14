@@ -1,5 +1,5 @@
 import React from 'react';
-import Waveform from './Waveform';
+import Waveform from './waveform';
 import pianoClip from './piano.mp3';
 import { Wrap } from './styled';
 
