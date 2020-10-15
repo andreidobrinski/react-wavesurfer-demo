@@ -24,7 +24,7 @@ const Waveform = ({ audio }) => {
     return () => {
       waveSurfer.destroy();
     };
-  }, []);
+  }, [audio]);
 
   return (
     <WaveSurferWrap>
