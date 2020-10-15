@@ -14,5 +14,6 @@ export const WaveSurferWrap = styled.div`
     height: 40px;
     border: none;
     padding: 0;
+    background-color: white;
   }
 `;
