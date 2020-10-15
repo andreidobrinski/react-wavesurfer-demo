@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import WaveSurfer from 'wavesurfer.js';
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
 import { WaveSurferWrap } from './styled';
 
 const Waveform = ({ audio }) => {
+  const waveSurferRef = useRef();
   const [isPlaying, toggleIsPlaying] = useState(false);
   const [localWaveSurfer, setLocalWaveSurfer] = useState(() => {});
 
   useEffect(() => {
     const waveSurfer = WaveSurfer.create({
-      container: '#waveForm',
+      container: waveSurferRef.current,
       responsive: true,
       barWidth: 2,
       barHeight: 10,
@@ -37,7 +38,7 @@ const Waveform = ({ audio }) => {
       >
         {isPlaying ? <FaPauseCircle size="3em" /> : <FaPlayCircle size="3em" />}
       </button>
-      <div id="waveForm" />
+      <div ref={waveSurferRef} />
     </WaveSurferWrap>
   );
 };
