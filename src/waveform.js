@@ -34,7 +34,7 @@ const Waveform = ({ audio }) => {
       <button
         onClick={() => {
           waveSurferRef.current.playPause();
-          toggleIsPlaying(prevState => !prevState);
+          toggleIsPlaying(waveSurferRef.current.isPlaying());
         }}
         type="button"
       >
