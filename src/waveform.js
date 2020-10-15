@@ -7,7 +7,9 @@ import { WaveSurferWrap } from './styled';
 const Waveform = ({ audio }) => {
   const waveSurferRef = useRef();
   const [isPlaying, toggleIsPlaying] = useState(false);
-  const [localWaveSurfer, setLocalWaveSurfer] = useState(() => {});
+  const [localWaveSurfer, setLocalWaveSurfer] = useState({
+    isPlaying: () => false,
+  });
 
   useEffect(() => {
     const waveSurfer = WaveSurfer.create({
