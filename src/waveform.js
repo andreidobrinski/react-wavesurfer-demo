@@ -5,15 +5,15 @@ import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
 import { WaveSurferWrap } from './styled';
 
 const Waveform = ({ audio }) => {
-  const waveSurferRef = useRef();
-  const [isPlaying, toggleIsPlaying] = useState(false);
-  const [localWaveSurfer, setLocalWaveSurfer] = useState({
+  const containerRef = useRef();
+  const waveSurferRef = useRef({
     isPlaying: () => false,
   });
+  const [isPlaying, toggleIsPlaying] = useState(false);
 
   useEffect(() => {
     const waveSurfer = WaveSurfer.create({
-      container: waveSurferRef.current,
+      container: containerRef.current,
       responsive: true,
       barWidth: 2,
       barHeight: 10,
@@ -21,7 +21,7 @@ const Waveform = ({ audio }) => {
     });
     waveSurfer.load(audio);
     waveSurfer.on('ready', () => {
-      setLocalWaveSurfer(waveSurfer);
+      waveSurferRef.current = waveSurfer;
     });
 
     return () => {
@@ -33,14 +33,14 @@ const Waveform = ({ audio }) => {
     <WaveSurferWrap>
       <button
         onClick={() => {
-          localWaveSurfer.playPause();
+          waveSurferRef.current.playPause();
           toggleIsPlaying(prevState => !prevState);
         }}
         type="button"
       >
         {isPlaying ? <FaPauseCircle size="3em" /> : <FaPlayCircle size="3em" />}
       </button>
-      <div ref={waveSurferRef} />
+      <div ref={containerRef} />
     </WaveSurferWrap>
   );
 };
