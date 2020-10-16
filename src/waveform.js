@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import WaveSurfer from 'wavesurfer.js';
+import styled from 'styled-components';
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
-import { WaveSurferWrap } from './styled';
 
 const Waveform = ({ audio }) => {
   const containerRef = useRef();
@@ -48,5 +48,20 @@ const Waveform = ({ audio }) => {
 Waveform.propTypes = {
   audio: PropTypes.string.isRequired,
 };
+
+const WaveSurferWrap = styled.div`
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+
+  button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    padding: 0;
+    background-color: white;
+  }
+`;
+
 
 export default Waveform;

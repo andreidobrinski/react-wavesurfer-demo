@@ -1,7 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import Waveform from './waveform';
 import pianoClip from './piano.mp3';
-import { Wrap } from './styled';
 
 const App = () => {
   return (
@@ -11,5 +11,9 @@ const App = () => {
     </Wrap>
   );
 }
+
+const Wrap = styled.div`
+  padding: 16px;
+`;
 
 export default App;
