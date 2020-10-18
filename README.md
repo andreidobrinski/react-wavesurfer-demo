@@ -1,3 +1,5 @@
+![waveform](./screenshot.png)
+
 # React Wavesurfer Demo
 
 ## About
